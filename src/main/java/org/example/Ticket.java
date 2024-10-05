@@ -5,14 +5,14 @@ import java.time.OffsetDateTime;
 /**
  * Можно изменять по своему усмотрению, не нарушая правила приоритезации очереди
  */
-public class Ticket {
 
-    private static int idSeq;
+public class Ticket {
 
     /**
      * Автогенерация id
      */
-    int id = ++idSeq;
+    int id;
+    private static int idSeq;
 
     /**
      * Приоритеты типов:
@@ -24,9 +24,11 @@ public class Ticket {
     /**
      * Приоритет для ранней регистрации
      */
-    OffsetDateTime registerTime = OffsetDateTime.now();
+    OffsetDateTime registerTime;
 
     public Ticket(String type) {
         this.type = type;
+        this.registerTime = OffsetDateTime.now();
+        this.id = idSeq++;
     }
 }
