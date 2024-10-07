@@ -25,10 +25,10 @@ class HomeWorkTest {
         ticketManager.add(new Ticket("pension"));//1
         ticketManager.add(new Ticket("other"));//2
         ticketManager.add(new Ticket("pension"));//3
-        Assertions.assertEquals(ticketManager.next().id, 3);
         Assertions.assertEquals(ticketManager.next().id, 1);
-        Assertions.assertEquals(ticketManager.next().id, 2);
+        Assertions.assertEquals(ticketManager.next().id, 3);
         Assertions.assertEquals(ticketManager.next().id, 0);
+        Assertions.assertEquals(ticketManager.next().id, 2);
         Assertions.assertNull(ticketManager.next());
 
         TicketManager ticketManager2 = homeWork.managerFabric();
@@ -36,18 +36,18 @@ class HomeWorkTest {
         ticketManager2.add(new Ticket("other"));//4
         ticketManager2.add(new Ticket("other"));//5
         ticketManager2.add(new Ticket("other"));//6
-        Assertions.assertEquals(ticketManager2.next().id, 6);
-        Assertions.assertEquals(ticketManager2.next().id, 5);
         Assertions.assertEquals(ticketManager2.next().id, 4);
+        Assertions.assertEquals(ticketManager2.next().id, 5);
+        Assertions.assertEquals(ticketManager2.next().id, 6);
 
         TicketManager ticketManager3 = homeWork.managerFabric();
 
         ticketManager3.add(new Ticket("pension"));//7
         ticketManager3.add(new Ticket("pension"));//8
         ticketManager3.add(new Ticket("pension"));//9
-        Assertions.assertEquals(ticketManager3.next().id, 9);
-        Assertions.assertEquals(ticketManager3.next().id, 8);
         Assertions.assertEquals(ticketManager3.next().id, 7);
+        Assertions.assertEquals(ticketManager3.next().id, 8);
+        Assertions.assertEquals(ticketManager3.next().id, 9);
     }
 
     @Test

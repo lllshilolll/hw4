@@ -11,6 +11,7 @@ public class TicketManagerImpl implements TicketManager {
 
     /**
      * Регистрация талона в очереди
+     * первый зашел - первый вышел
      *
      * @param ticket
      */
@@ -18,16 +19,21 @@ public class TicketManagerImpl implements TicketManager {
     public void add(Ticket ticket) {
         if (queue.isEmpty()) {
             queue.add(ticket);
+
         } else if (ticket.type.equals("pension")) {
-            queue.add(0, ticket);
-        } else {
-            for (int i = 0; i < queue.size(); i++) {
+            int i = 0;
+
+            for (; i < queue.size(); i++) {
                 if (!queue.get(i).type.equals("pension")) {
                     queue.add(i, ticket);
-                    break;
+                    return;
                 }
             }
-
+            if (i == queue.size()) {
+                queue.add(ticket);
+            }
+        } else {
+            queue.add(ticket);
         }
     }
 
